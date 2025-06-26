@@ -12,7 +12,7 @@ local redzLib = {
     Version = "v1.2.2",
     PlaceName = MarketplaceService:GetProductInfo(game.PlaceId).Name
   },
-  Themes = loadstring(game:HttpGet("https://pastebin.com/raw/HQyqw6qd"))(),
+  Themes = loadstring(game:HttpGet("https://raw.githubusercontent.com/5TR9/5TR/refs/heads/main/Theme"))(),
   Flags = {},
   Save = {
     Theme = "Default",
