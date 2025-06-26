@@ -12,8 +12,8 @@ local redzLib = {
     Version = "v1.2.2",
     PlaceName = MarketplaceService:GetProductInfo(game.PlaceId).Name
   },
-  Themes = loadstring(game:HttpGet("https://raw.githubusercontent.com/5TR9/5TR/refs/heads/main/Theme"))(),
-  Flags = {},
+  Themes = loadstring(game:HttpGet("https://raw.githubusercontent.com/5TR9/5TR/refs/main/Theme"))(),
+  Flags = {},https://raw.githubusercontent.com/alodozhynn/RedzLibV4/main/Themes.lua
   Save = {
     Theme = "Default",
     UISize = {550, 310},
