@@ -215,14 +215,14 @@ TweenObject(v11, 0.5, {
 TweenObject(v12, 0.5, {
     BackgroundTransparency = 1
 });
-wait(2);
+wait(0.2);
 TweenObject(v6, 0.25, {
     Size = UDim2.new(0, 0, 0, 0)
 });
-wait(2);
+wait(0.2);
 v5:Destroy();
 
-  wait(2)
+  wait(0.2)
 local TweenService = game:GetService("TweenService")
 local Players = game:GetService("Players")
 local Lighting = game:GetService("Lighting")
@@ -230,17 +230,6 @@ local player = Players.LocalPlayer
 local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
 gui.ResetOnSpawn = false
 gui.Name = "FancyNotificationGui"
-
-local blur = Instance.new("BlurEffect")
-blur.Size = 0
-blur.Parent = Lighting
-
-local messages = {
-   "الاصدار V1.0.0",
-    "النسخة العربية",
-    "الانجلبزية قريباً",
-    "سوي ريست مزه ثانيه"
-}
 
 local function showNotification(text, imageId)
     local frame = Instance.new("Frame")
@@ -303,34 +292,45 @@ local function showNotification(text, imageId)
     frame:Destroy()
 end
 
-coroutine.wrap(function()
-    for _, msg in ipairs(messages) do
-        showNotification(msg, "rbxassetid://118645584852990")
-        wait(0.30)
-    end
-end)()
-
   wait(0.32)
-game.Players.LocalPlayer.Character.Humanoid.Health = 0
-  wait(0.34)
+
+local Sound = Instance.new("Sound", game:GetService("SoundService"));
+Sound.SoundId = "rbxassetid://85833437298815";
+Sound:Play();
+
+game:GetService("ReplicatedStorage").RE["1RPNam1eTex1t"]:FireServer("RolePlayName", "سـكـربـت الـمـطـور تـرانـكـس")
+
 local args = {
-    [1] = "RolePlayName",
-    [2] = "- 5TR HUB | Arabia -"
+    [1] = "PickingRPNameColor",
+    [2] = Color3.fromRGB(7, 167, 0), -- Amarelo
 }
 
-game:GetService("ReplicatedStorage").RE:FindFirstChild("1RPNam1eTex1t"):FireServer(unpack(args))
-wait(0.36)
+game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
+
 local args = {
     [1] = "RolePlayBio",
-    [2] = "- V1.0.0 -"}
- 
-game:GetService("ReplicatedStorage").RE:FindFirstChild("1RPNam1eTex1t"):FireServer(unpack(args))
-  wait(0.38)
+    [2] ="∆ Version V0.3 ∆"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eTex1t"):FireServer(unpack(args))
+
+local args = {
+    [1] = "PickingRPBioColor",
+    [2] = Color3.fromRGB(0, 0, 255), -- Blue
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
+wait(0.5)
+game.StarterGui:SetCore("SendNotification", {
+    Title = "لاتنسى تشوف الحقوق";
+    Text = "يوزري تيك @tru_nks1"; -- ARAB TEAM
+    Duration = 5;
+})
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/mhmdsx/ui-TKX/refs/heads/main/ui%20TKX.txt")))()
 MakeWindow({
 Hub = {
 Title = "5TR HUB | Brookhaven RP | V1.0.0",
-Animation = "V1.0.0"
+Animation = "جـارٍ التحمـيل..."
 },
 Key = {
 KeySystem = false,
@@ -349,84 +349,25 @@ CopyKeyLink = "Copied to Clipboard"
 
 MinimizeButton({
 Image = "rbxassetid://118645584852990",
-Size = {40, 40},
+Size = {50, 50},
 Color = Color3.fromRGB(255, 0, 0),
 Corner = true,
 Stroke = true,
-StrokeColor = Color3.fromRGB(255, 255, 255)
+StrokeColor = Color3.fromRGB(255, 0, 0)
 })
-local Main = MakeTab({Name = "معلومات السكربت"})
-AddImageLabel(Main, {
-  Name = "تم تطوير السكربت بواسطة TKX",
-  Image = "rbxassetid://118645584852990"
-})
-AddSection(Main, {"قائد التيم TRUNKS"})
-AddSection(Main, {"نائب القائد TROLLX"})
-AddSection(Main, {"المطور JOY"})
-AddSection(Main, {"المطور UGIX"})
-AddSection(Main, {"المطورة ENJOY"})
-AddSection(Main, {"-------------------"})
+local Main = MakeTab({Name = "「الحـسابات」"})
+AddDiscord(Main, {
+    DiscordLink = "https://t.me/DarknessHUB12",
+    DiscordIcon = "rbxassetid://115881843808544",
+    DiscordTitle = "「انـضم للقنـاة التيليجـرام للـتلقي جمـيع الاخبـار !」",
+    })
+AddSection(Main, {"「المـطور | 5TR」"})
+AddSection(Main, {"「نـائـب المطـور | D7lix_R」"})
 AddSection(Main, {"روابط التليجرام"})
 AddButton(Main, {
   Name = "انسخ رابط قناة التيم في التليجرام",
   Callback = function()
     setclipboard('https://t.me/TKXHUB')
-  end
-})
-AddButton(Main, {
-  Name = "انسخ رابط قناة المطور يوجي في التليجرام",
-  Callback = function()
-    setclipboard('https://t.me/po_ff')
-  end
-})
-AddButton(Main, {
-  Name = "انسخ رابط قناة المطورة انجوي-فايروس",
-  Callback = function()
-    setclipboard('https://t.me/ViRuS_Scrip1')
-  end
-})
-AddButton(Main, {
-  Name = "انسخ رابط قناة المطور ترولكس",
-  Callback = function()
-    setclipboard('https://t.me/TrollXHub1')
-  end
-})
-AddButton(Main, {
-  Name = "انسخ رابط قناة المطور جويكس", 
-Callback = function()
-    setclipboard('https://t.me/kayScript1')
-  end
-})
-AddSection(Main, {"روابط اليوتيوب"})
-AddButton(Main, {
-  Name = "انسخ يوزر المطور يوجي", 
-Callback = function()
-    setclipboard('81__i')
-  end
-})
-AddButton(Main, {
-  Name = "انسخ يوزر قائد التيم ترانكس", 
-Callback = function()
-    setclipboard('trunks_1_')
-  end
-})
-AddButton(Main, {
-  Name = "انسخ رابط يوزر النائب ترولكس", 
-Callback = function()
-    setclipboard('trollx.tkx')
-  end
-})
-AddSection(Main, {"روابط اليوتيوب"})
-AddButton(Main, {
-  Name = "انسخ رابط قناة القائد ترانكس", 
-Callback = function()
-    setclipboard('https://www.youtube.com/@Trunks-script')
-  end
-})
-AddButton(Main, {
-  Name = "انسخ رابط قناة النائب ترولكس", 
-Callback = function()
-    setclipboard('https://youtube.com/@troll.x40_40?si=Kos6ATGFSv3kArU-')
   end
 })
 local Main = MakeTab({Name = "الكشف"})
@@ -468,23 +409,21 @@ end
 })
 AddSection(Main, {"مـشـغـل الـاغـانـي"})
 AddTextBox(Main, {
-  Name = "للسياره",
-  Default = "",
+Name = "للسياره",
+Default = "",
 PlaceholderText = "ادخل الكود",
-  ClearText = true,
-  Callback = function(Value)
-local args1 = {
-            [1] = "SkateBoard"
-        }
-        game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1NoMoto1rVehicle1s"):FireServer(unpack(args1))
- 
-        -- Replacing the static value with the input from the textbox
-        local args2 = {
-            [1] = "PickingScooterMusicText",
-            [2] = Value -- Here, we use the textbox value to replace 35935204
-        }
-        game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1NoMoto1rVehicle1s"):FireServer(unpack(args2))
-        
+ClearText = true,
+Callback = function(Value)
+    local args1 = {
+        [1] = "MotorVehicle"
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1NoMoto1rVehicle1s"):FireServer(unpack(args1))
+
+    local args2 = {
+        [1] = "PickingCarMusicText",
+        [2] = Value
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1NoMoto1rVehicle1s"):FireServer(unpack(args2))
 end 
 })
 AddTextBox(Main, {
@@ -508,17 +447,17 @@ local args1 = {
 end 
 }) 
 AddTextBox(Main, {
-  Name = "للبيت",
-  Default = "",
-  PlaceholderText = "ادخل الكود",
-  ClearText = true,
-  Callback = function(input)
-local args = {
-            [1] = "PickHouseMusicText",
-            [2] = input -- Use the user's input here
-        }
-        game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1Player1sHous1e"):FireServer(unpack(args))
-    end
+Name = "للبيت",
+Default = "",
+PlaceholderText = "ادخل الكود",
+ClearText = true,
+Callback = function(input)
+    local args = {
+        [1] = "PickHouseMusicText",
+        [2] = input
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1Player1sHous1e"):FireServer(unpack(args))
+end
 })
 AddTextBox(Main, {
   Name = "بدون جيم باس",
@@ -539,6 +478,21 @@ local args1 = {
         game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1NoMoto1rVehicle1s"):FireServer(unpack(args2))
         
 end 
+})
+AddTextBox(Main, {
+    Name = "تشغيل موسيقى في الماب كامل",
+    Default = "",
+    PlaceholderText = "ادخل كود الموسيقى",
+    ClearText = true,
+    Callback = function(value)
+        local musicCode = value
+        local remote = game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("PlayMapMusic") -- غير الاسم حسب اسم الحدث الصحيح
+        if remote then
+            remote:FireServer(musicCode)
+        else
+            warn("حدث تشغيل الموسيقى للماب مش موجود!")
+        end
+    end
 })
 AddSection(Main, {"قائمة العربي"})
 
