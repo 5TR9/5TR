@@ -298,39 +298,59 @@ local Sound = Instance.new("Sound", game:GetService("SoundService"));
 Sound.SoundId = "rbxassetid://85833437298815";
 Sound:Play();
 
-game:GetService("ReplicatedStorage").RE["1RPNam1eTex1t"]:FireServer("RolePlayName", "سـكـربـت الـمـطـور تـرانـكـس")
+game:GetService("ReplicatedStorage").RE["1RPNam1eTex1t"]:FireServer("RolePlayName", "「5TR HUB | V1」")
 
 local args = {
     [1] = "PickingRPNameColor",
-    [2] = Color3.fromRGB(7, 167, 0), -- Amarelo
+    [2] = Color3.fromRGB(165, 42, 42),
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
 
 local args = {
     [1] = "RolePlayBio",
-    [2] ="∆ Version V0.3 ∆"
+    [2] ="「Script Search : 5TR」"
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eTex1t"):FireServer(unpack(args))
 
 local args = {
     [1] = "PickingRPBioColor",
-    [2] = Color3.fromRGB(0, 0, 255), -- Blue
+    [2] = Color3.fromRGB(0, 255, 255),
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
 wait(0.5)
-game.StarterGui:SetCore("SendNotification", {
-    Title = "لاتنسى تشوف الحقوق";
-    Text = "يوزري تيك @tru_nks1"; -- ARAB TEAM
-    Duration = 5;
-})
+local Players = game:GetService("Players")
+local Players = game:GetService("Players")
+local StarterGui = game:GetService("StarterGui")
+
+--
+local function ShowNoti(title, text, userId)
+    local thumbType = Enum.ThumbnailType.HeadShot
+    local thumbSize = Enum.ThumbnailSize.Size420x420
+    local thumbUrl, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
+
+    StarterGui:SetCore("SendNotification", {
+        Title = "「" .. title .. "」",
+        Text = "「" .. text .. "」",
+        Icon = thumbUrl,
+        Duration = 10
+    })
+end
+
+-- إشعار المطور الأساسي
+ShowNoti("System", "المطـور : 5TR", 4148536359)
+
+-- بعد 10 ثواني: إشعار المطور الثانوي
+task.delay(10, function()
+    ShowNoti("System", "نائـب المطـور : D7lix_R", 4086795017)
+end)
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/mhmdsx/ui-TKX/refs/heads/main/ui%20TKX.txt")))()
 MakeWindow({
 Hub = {
-Title = "5TR HUB | Brookhaven RP | V1.0.0",
-Animation = "جـارٍ التحمـيل..."
+Title = "「5TR HUB | Brookhaven RP | V1.0.0」",
+Animation = "「جـارٍ التحمـيل」"
 },
 Key = {
 KeySystem = false,
@@ -349,25 +369,25 @@ CopyKeyLink = "Copied to Clipboard"
 
 MinimizeButton({
 Image = "rbxassetid://118645584852990",
-Size = {50, 50},
+Size = {40, 40},
 Color = Color3.fromRGB(255, 0, 0),
 Corner = true,
 Stroke = true,
 StrokeColor = Color3.fromRGB(255, 0, 0)
 })
-local Main = MakeTab({Name = "「الحـسابات」"})
+local Main = MakeTab({Name = "「المعلومـات」"})
 AddDiscord(Main, {
-    DiscordLink = "https://t.me/DarknessHUB12",
-    DiscordIcon = "rbxassetid://115881843808544",
+    DiscordLink = "https://t.me/v5TR1",
+    DiscordIcon = "rbxassetid://118645584852990",
     DiscordTitle = "「انـضم للقنـاة التيليجـرام للـتلقي جمـيع الاخبـار !」",
     })
 AddSection(Main, {"「المـطور | 5TR」"})
 AddSection(Main, {"「نـائـب المطـور | D7lix_R」"})
 AddSection(Main, {"روابط التليجرام"})
 AddButton(Main, {
-  Name = "انسخ رابط قناة التيم في التليجرام",
+  Name = "「نـسخ حسـاب المطـور ديسـكورد」",
   Callback = function()
-    setclipboard('https://t.me/TKXHUB')
+    setclipboard('u5rh.')
   end
 })
 local Main = MakeTab({Name = "الكشف"})
