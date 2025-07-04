@@ -1,5 +1,5 @@
   wait(0.2)
-shared.LoaderTitle = "5TR HUB";
+shared.LoaderTitle = "「 5TR HUB 」";
 shared.LoaderKeyFrames = {
     [1] = {
         1,
@@ -103,7 +103,7 @@ local v8 = CreateObject("TextLabel", {
     Name = "UserName",
     Parent = v6,
     BackgroundTransparency = 1,
-    Text = "جـارٍ تحمـيل سكـربت مطـور 5TR",
+    Text = "「 جـارٍ تحميـل سكربـت المطـور 5TR 」",
     Position = UDim2.new(0, 75, 0, 10),
     Size = UDim2.new(0, 200, 0, 50),
     Font = Enum.Font.GothamBold,
@@ -298,7 +298,7 @@ local Sound = Instance.new("Sound", game:GetService("SoundService"));
 Sound.SoundId = "rbxassetid://85833437298815";
 Sound:Play();
 
-game:GetService("ReplicatedStorage").RE["1RPNam1eTex1t"]:FireServer("RolePlayName", "「5TR HUB | V1」")
+game:GetService("ReplicatedStorage").RE["1RPNam1eTex1t"]:FireServer("RolePlayName", "「 5TR HUB | V1 」")
 
 local args = {
     [1] = "PickingRPNameColor",
@@ -309,7 +309,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eCo
 
 local args = {
     [1] = "RolePlayBio",
-    [2] ="「Script Search : 5TR」"
+    [2] ="「 Script Search : 5TR 」"
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eTex1t"):FireServer(unpack(args))
@@ -332,17 +332,15 @@ local function ShowNoti(title, text, userId)
     local thumbUrl, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
 
     StarterGui:SetCore("SendNotification", {
-        Title = "「" .. title .. "」",
-        Text = "「" .. text .. "」",
+        Title = "「 " .. title .. " 」",
+        Text = "「 " .. text .. " 」",
         Icon = thumbUrl,
         Duration = 10
     })
 end
 
--- إشعار المطور الأساسي
 ShowNoti("System", "المطـور : 5TR", 4148536359)
 
--- بعد 10 ثواني: إشعار المطور الثانوي
 task.delay(10, function()
     ShowNoti("System", "نائـب المطـور : D7lix_R", 4086795017)
 end)
@@ -350,7 +348,7 @@ loadstring(game:HttpGet(("https://raw.githubusercontent.com/mhmdsx/ui-TKX/refs/h
 MakeWindow({
 Hub = {
 Title = "「5TR HUB | Brookhaven RP | V1.0.0」",
-Animation = "「جـارٍ التحمـيل」"
+Animation = "「 جـارٍ التحمـيل 」"
 },
 Key = {
 KeySystem = false,
@@ -375,59 +373,112 @@ Corner = true,
 Stroke = true,
 StrokeColor = Color3.fromRGB(255, 0, 0)
 })
-local Main = MakeTab({Name = "「المعلومـات」"})
+local Main = MakeTab({Name = "「 المعـلومـات والحسـابات 」"})
 AddDiscord(Main, {
     DiscordLink = "https://t.me/v5TR1",
     DiscordIcon = "rbxassetid://118645584852990",
-    DiscordTitle = "「انـضم للقنـاة التيليجـرام للـتلقي جمـيع الاخبـار !」",
+    DiscordTitle = "「 انـضم للقنـاة التيليجـرام للـتلقي جمـيع الاخبـار ! 」",
     })
-AddSection(Main, {"「المـطور | 5TR」"})
-AddSection(Main, {"「نـائـب المطـور | D7lix_R」"})
-AddSection(Main, {"روابط التليجرام"})
+AddSection(Main, {"「 المـطور | 5TR 」"})
+AddSection(Main, {"「 نـائـب المطـور | D7lix_R 」"})
+local Paragraph = AddParagraph(Main, {"「 حسـابات المطـورين 」"})
 AddButton(Main, {
-  Name = "「نـسخ حسـاب المطـور ديسـكورد」",
+  Name = "「 نـسخ حسـاب المطـور ديسـكورد 」",
   Callback = function()
     setclipboard('u5rh.')
   end
 })
-local Main = MakeTab({Name = "الكشف"})
+coroutine.wrap(updateTime)(Label)
+
+local Main = MakeTab({Name = "「 كشف اللاعبين 」"})
+local Paragraph = AddParagraph(Main, {"「 كشـف لاعبـين السيـرفر كـله 」", ""})
+
 local ESP = loadstring(game:HttpGet("https://kiriot22.com/releases/ESP.lua"))()
 ESP:Toggle(true)
 ESP.Players = false
+ESP.Tracers = false
+ESP.Boxes = false
 ESP.Names = false
+ESP.TeamColor = false
+ESP.TeamMates = false
 
-local Toggle = AddToggle(Main, {
-  Name = "تفعيل الكشف",
+AddToggle(Main, {
+  Name = "「 تفعـيل الكشـف كـله 」",
+  Default = false,
+  Callback = function(Value)
+    ESP.Players = Value
+    ESP.Names = Value
+    ESP.Boxes = Value
+    ESP.Tracers = Value
+    ESP.TeamColor = Value
+    ESP.TeamMates = Value
+  end
+})
+
+AddToggle(Main, {
+  Name = "「 تفعـيل الكـشـف 」",
   Default = false,
   Callback = function(Value)
     ESP.Players = Value
   end
 })
 
-local Toggle = AddToggle(Main, {
-  Name = "اسامي الاعبين",
+AddToggle(Main, {
+  Name = "「 الاسـم 」",
   Default = false,
   Callback = function(Value)
     ESP.Names = Value
   end
 })
+
+AddToggle(Main, {
+  Name = "「 البوكـس 」",
+  Default = false,
+  Callback = function(Value)
+    ESP.Boxes = Value
+  end
+})
+
+AddToggle(Main, {
+  Name = "「 الرسـم 」",
+  Default = false,
+  Callback = function(Value)
+    ESP.Tracers = Value
+  end
+})
+
+AddToggle(Main, {
+  Name = "「 ضـد الفـريق 」",
+  Default = false,
+  Callback = function(Value)
+    ESP.TeamColor = Value
+  end
+})
+
+AddToggle(Main, {
+  Name = "「 لـون الفـريق 」",
+  Default = false,
+  Callback = function(Value)
+    ESP.TeamMates = Value
+  end
+})
+
 AddColorPicker(Main, {
-  Name = "لون ESP ",
+  Name = "「 اختـار لـون 」",
   Default = Color3.fromRGB(255, 255, 0),
   Callback = function(Value)
     ESP.Color = Value
   end
 })
-
-local Main = MakeTab({Name = "الاغاني"})
-local Paragraph = AddParagraph(Main, {"الرجاء قبل تشغيل الاغنية اعمل ريسيت عن طريق الضغط على الزر ادناه", "bom dia meus manos"})
+local Main = MakeTab({Name = "「 الاغـاني 」"})
+local Paragraph = AddParagraph(Main, {"「 اذا تبـي سكـوتر يـروح سـوي ريـست من الـزر الـي تحـت 」")
  AddButton(Main, {
-Name = "الريسيت",
+Name = "「 الريـست 」",
 Callback = function()
     game.Players.LocalPlayer.Character.Humanoid.Health = 0
 end
 })
-AddSection(Main, {"مـشـغـل الـاغـانـي"})
+AddSection(Main, {"「 مشـغل الاغـانـي 」"})
 AddTextBox(Main, {
 Name = "للسياره",
 Default = "",
@@ -441,7 +492,7 @@ Callback = function(Value)
 
     local args2 = {
         [1] = "PickingCarMusicText",
-        [2] = Value
+        [2] = "Value"
     }
     game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1NoMoto1rVehicle1s"):FireServer(unpack(args2))
 end 
