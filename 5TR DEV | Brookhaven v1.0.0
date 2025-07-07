@@ -1,22 +1,10 @@
-  wait(0.2)
+wait(0.2)
 shared.LoaderTitle = "「 5TR HUB 」";
 shared.LoaderKeyFrames = {
-    [1] = {
-        1,
-        10
-    },
-    [2] = {
-        2,
-        30
-    },
-    [3] = {
-        3,
-        60
-    },
-    [4] = {
-        2,
-        100
-    }
+    [1] = {1, 10},
+    [2] = {2, 30},
+    [3] = {3, 60},
+    [4] = {2, 100}
 };
 local v2 = {
     LoaderData = {
@@ -30,30 +18,13 @@ local v2 = {
         }
     },
     Keyframes = shared.LoaderKeyFrames or {
-        [1] = {
-            1,
-            10
-        },
-        [2] = {
-            2,
-            30
-        },
-        [3] = {
-            3,
-            60
-        },
-        [4] = {
-            2,
-            100
-        }
+        [1] = {1, 10},
+        [2] = {2, 30},
+        [3] = {3, 60},
+        [4] = {2, 100}
     }
 };
-local v3 = {
-    [1] = "",
-    [2] = "",
-    [3] = "",
-    [4] = ""
-};
+local v3 = {[1] = "", [2] = "", [3] = "", [4] = ""};
 function TweenObject(v178, v179, v180)
     game.TweenService:Create(v178, TweenInfo.new(v179, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), v180):Play();
 end
@@ -75,10 +46,7 @@ local function v4(v186, v187)
     v188.CornerRadius = UDim.new(0, v186);
     v188.Parent = v187;
 end
-local v5 = CreateObject("ScreenGui", {
-    Name = "Core",
-    Parent = game.CoreGui
-});
+local v5 = CreateObject("ScreenGui", {Name = "Core", Parent = game.CoreGui});
 local v6 = CreateObject("Frame", {
     Name = "Main",
     Parent = v5,
@@ -120,7 +88,7 @@ local v9 = CreateObject("TextLabel", {
     Position = UDim2.new(0, 30, 0, 70),
     Size = UDim2.new(0, 301, 0, 20),
     Font = Enum.Font.Gotham,
-    Text = "Loader",
+    Text = "「 Loader 」",
     TextColor3 = v2.LoaderData.Colors.Topic,
     TextSize = 10,
     TextXAlignment = Enum.TextXAlignment.Left
@@ -148,7 +116,7 @@ local v11 = CreateObject("Frame", {
     BackgroundColor3 = v2.LoaderData.Colors.LoaderBackground,
     BorderSizePixel = 0,
     Position = UDim2.new(0.5, 0, 0, 70),
-    Size = UDim2.new(0.8500000238418579, 0, 0, 24)
+    Size = UDim2.new(0.85, 0, 0, 24)
 });
 v4(8, v11);
 local v12 = CreateObject("Frame", {
@@ -164,8 +132,8 @@ local v13 = CreateObject("TextLabel", {
     Name = "StepLabel",
     Parent = v6,
     BackgroundTransparency = 1,
-    Position = UDim2.new(0.5, 0, 1, - 25),
-    Size = UDim2.new(1, - 20, 0, 20),
+    Position = UDim2.new(0.5, 0, 1, -25),
+    Size = UDim2.new(1, -20, 0, 20),
     Font = Enum.Font.Gotham,
     Text = "",
     TextColor3 = v2.LoaderData.Colors.Topic,
@@ -174,7 +142,7 @@ local v13 = CreateObject("TextLabel", {
     AnchorPoint = Vector2.new(0.5, 0.5)
 });
 function UpdateStepText(v191)
-    v13.Text = v3[v191] or "" ;
+    v13.Text = v3[v191] or "";
 end
 function UpdatePercentage(v193, v194)
     TweenObject(v12, 0.5, {
@@ -182,47 +150,27 @@ function UpdatePercentage(v193, v194)
     });
     UpdateStepText(v194);
 end
-TweenObject(v6, 0.25, {
-    Size = UDim2.new(0, 346, 0, 121)
-});
+TweenObject(v6, 0.25, {Size = UDim2.new(0, 346, 0, 121)});
 wait();
-TweenObject(v9, 0.5, {
-    TextTransparency = 0
-});
-TweenObject(v10, 0.5, {
-    TextTransparency = 0
-});
-TweenObject(v11, 0.5, {
-    BackgroundTransparency = 0
-});
-TweenObject(v12, 0.5, {
-    BackgroundTransparency = 0
-});
+TweenObject(v9, 0.5, {TextTransparency = 0});
+TweenObject(v10, 0.5, {TextTransparency = 0});
+TweenObject(v11, 0.5, {BackgroundTransparency = 0});
+TweenObject(v12, 0.5, {BackgroundTransparency = 0});
 for v195, v196 in pairs(v2.Keyframes) do
     wait(v196[1]);
     UpdatePercentage(v196[2], v195);
 end
 UpdatePercentage(100, 4);
-TweenObject(v9, 0.5, {
-    TextTransparency = 1
-});
-TweenObject(v10, 0.5, {
-    TextTransparency = 1
-});
-TweenObject(v11, 0.5, {
-    BackgroundTransparency = 1
-});
-TweenObject(v12, 0.5, {
-    BackgroundTransparency = 1
-});
+TweenObject(v9, 0.5, {TextTransparency = 1});
+TweenObject(v10, 0.5, {TextTransparency = 1});
+TweenObject(v11, 0.5, {BackgroundTransparency = 1});
+TweenObject(v12, 0.5, {BackgroundTransparency = 1});
 wait(0.2);
-TweenObject(v6, 0.25, {
-    Size = UDim2.new(0, 0, 0, 0)
-});
+TweenObject(v6, 0.25, {Size = UDim2.new(0, 0, 0, 0)});
 wait(0.2);
 v5:Destroy();
 
-  wait(0.2)
+wait(0.2)
 local TweenService = game:GetService("TweenService")
 local Players = game:GetService("Players")
 local Lighting = game:GetService("Lighting")
@@ -292,7 +240,7 @@ local function showNotification(text, imageId)
     frame:Destroy()
 end
 
-  wait(0.32)
+wait(0.32)
 
 local Sound = Instance.new("Sound", game:GetService("SoundService"));
 Sound.SoundId = "rbxassetid://85833437298815";
@@ -316,16 +264,16 @@ game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eTe
 
 local args = {
     [1] = "PickingRPBioColor",
-    [2] = Color3.fromRGB(0, 255, 255),
+    [2] = Color3.fromRGB(220, 20, 60),
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
 wait(0.5)
 local Players = game:GetService("Players")
+local player = Players.LocalPlayer
 local Players = game:GetService("Players")
 local StarterGui = game:GetService("StarterGui")
 
---
 local function ShowNoti(title, text, userId)
     local thumbType = Enum.ThumbnailType.HeadShot
     local thumbSize = Enum.ThumbnailSize.Size420x420
@@ -344,51 +292,54 @@ ShowNoti("System", "المطـور : 5TR", 4148536359)
 task.delay(10, function()
     ShowNoti("System", "نائـب المطـور : D7lix_R", 4086795017)
 end)
+
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/mhmdsx/ui-TKX/refs/heads/main/ui%20TKX.txt")))()
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+wait(0.1)
 MakeWindow({
-Hub = {
-Title = "「5TR HUB | Brookhaven RP | V1.0.0」",
-Animation = "「 جـارٍ التحمـيل 」"
-},
-Key = {
-KeySystem = false,
-Title = "Key System",
-Description = "",
-KeyLink = "",
-Keys = {""},
-Notifi = {
-Notifications = true,
-CorrectKey = "Running the Script...",
-Incorrectkey = "The key is incorrect",
-CopyKeyLink = "Copied to Clipboard"
-}
-}
+    Hub = {
+        Title = "「 5TR HUB | Brookhaven RP | V1 」",
+        Animation = "「 تـم تحـمـيل 」"
+    },
+    Key = {
+        KeySystem = false,
+        Title = "Key System",
+        Description = "",
+        KeyLink = "",
+        Keys = {""},
+        Notifi = {
+            Notifications = true,
+            CorrectKey = "Running the Script...",
+            Incorrectkey = "The key is incorrect",
+            CopyKeyLink = "Copied to Clipboard"
+        }
+    }
 })
 
 MinimizeButton({
-Image = "rbxassetid://118645584852990",
-Size = {40, 40},
-Color = Color3.fromRGB(255, 0, 0),
-Corner = true,
-Stroke = true,
-StrokeColor = Color3.fromRGB(255, 0, 0)
+    Image = "rbxassetid://118645584852990",
+    Size = {50, 50},
+    Color = Color3.fromRGB(255, 0, 0),
+    Corner = true,
+    Stroke = true,
+    StrokeColor = Color3.fromRGB(255, 0, 0)
 })
-local Main = MakeTab({Name = "「 المعـلومـات والحسـابات 」"})
-AddDiscord(Main, {
+
+local Dis1 = MakeTab({Name = "「 المعـلومـات والحسـابات 」"})
+AddDiscord(Dis1, {
     DiscordLink = "https://t.me/v5TR1",
     DiscordIcon = "rbxassetid://118645584852990",
-    DiscordTitle = "「 انـضم للقنـاة التيليجـرام للـتلقي جمـيع الاخبـار ! 」",
-    })
-AddSection(Main, {"「 المـطور | 5TR 」"})
-AddSection(Main, {"「 نـائـب المطـور | D7lix_R 」"})
-local Paragraph = AddParagraph(Main, {"「 حسـابات المطـورين 」"})
-AddButton(Main, {
+    DiscordTitle = "「 انـضم للقنـاة التيليجـرام للـتلقي جمـيع الاخبـار ! 」"
+})
+AddSection(Dis1, {"「 المـطور | 5TR 」"})
+AddSection(Dis1, {"「 نـائـب المطـور | D7lix_R 」"})
+local Paragraph = AddParagraph(Dis1, {"「 حسـابات المطـورين 」"})
+AddButton(Dis1, {
   Name = "「 نـسخ حسـاب المطـور ديسـكورد 」",
   Callback = function()
     setclipboard('u5rh.')
   end
 })
-coroutine.wrap(updateTime)(Label)
 
 local Main = MakeTab({Name = "「 كشف اللاعبين 」"})
 local Paragraph = AddParagraph(Main, {"「 كشـف لاعبـين السيـرفر كـله 」", ""})
@@ -402,28 +353,18 @@ ESP.Names = false
 ESP.TeamColor = false
 ESP.TeamMates = false
 
-AddToggle(Main, {
-  Name = "「 تفعـيل الكشـف كـله 」",
-  Default = false,
-  Callback = function(Value)
-    ESP.Players = Value
-    ESP.Names = Value
-    ESP.Boxes = Value
-    ESP.Tracers = Value
-    ESP.TeamColor = Value
-    ESP.TeamMates = Value
-  end
-})
 
-AddToggle(Main, {
-  Name = "「 تفعـيل الكـشـف 」",
+
+local Toggle = AddToggle(Main, {
+  Name = "「 تفـعـيل الكشـف 」",
   Default = false,
   Callback = function(Value)
     ESP.Players = Value
   end
 })
 
-AddToggle(Main, {
+
+local Toggle = AddToggle(Main, {
   Name = "「 الاسـم 」",
   Default = false,
   Callback = function(Value)
@@ -431,15 +372,17 @@ AddToggle(Main, {
   end
 })
 
-AddToggle(Main, {
-  Name = "「 البوكـس 」",
+
+local Toggle = AddToggle(Main, {
+  Name = "「 البـوكـس 」",
   Default = false,
   Callback = function(Value)
     ESP.Boxes = Value
   end
 })
 
-AddToggle(Main, {
+
+local Toggle = AddToggle(Main, {
   Name = "「 الرسـم 」",
   Default = false,
   Callback = function(Value)
@@ -447,55 +390,65 @@ AddToggle(Main, {
   end
 })
 
-AddToggle(Main, {
-  Name = "「 ضـد الفـريق 」",
+
+local Toggle = AddToggle(Main, {
+  Name = "「 فحـص الاعبـين 」",
   Default = false,
   Callback = function(Value)
     ESP.TeamColor = Value
   end
 })
 
-AddToggle(Main, {
-  Name = "「 لـون الفـريق 」",
+
+local Toggle = AddToggle(Main, {
+  Name = "「 لـون الاعبـين 」",
   Default = false,
   Callback = function(Value)
-    ESP.TeamMates = Value
+ESP.TeamMates = Value
   end
 })
 
+
 AddColorPicker(Main, {
-  Name = "「 اختـار لـون 」",
+  Name = "「 حـط اي لـون تبـيـه 」",
   Default = Color3.fromRGB(255, 255, 0),
   Callback = function(Value)
     ESP.Color = Value
   end
 })
-local Main = MakeTab({Name = "「 الاغـاني 」"})
-local Paragraph = AddParagraph(Main, {"「 اذا تبـي سكـوتر يـروح سـوي ريـست من الـزر الـي تحـت 」")
- AddButton(Main, {
-Name = "「 الريـست 」",
-Callback = function()
-    game.Players.LocalPlayer.Character.Humanoid.Health = 0
-end
-})
-AddSection(Main, {"「 مشـغل الاغـانـي 」"})
-AddTextBox(Main, {
-Name = "للسياره",
-Default = "",
-PlaceholderText = "ادخل الكود",
-ClearText = true,
-Callback = function(Value)
-    local args1 = {
-        [1] = "MotorVehicle"
-    }
-    game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1NoMoto1rVehicle1s"):FireServer(unpack(args1))
 
-    local args2 = {
-        [1] = "PickingCarMusicText",
-        [2] = "Value"
-    }
-    game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1NoMoto1rVehicle1s"):FireServer(unpack(args2))
-end 
+local Main = MakeTab({Name = "「 الاغـاني 」"})
+local Paragraph = AddParagraph(Main, {"「 اذا تبـي سكـوتر يـروح سـوي ريـست من الـزر الـي تحـت 」"})
+AddButton(Main, {
+    Name = "「 الريـست 」",
+    Callback = function()
+        local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+        local hum = char:WaitForChild("Humanoid")
+
+        hum.BreakJointsOnDeath = false
+        hum.Died:Connect(function()
+            for _, part in pairs(char:GetDescendants()) do
+                if part:IsA("BasePart") then
+                    part.Anchored = false
+                end
+            end
+        end)
+
+        hum.Health = 0
+    end
+})
+
+AddTextBox(Main, {
+    Name = "「 ضع كود الاغنية 」",
+    PlaceholderText = "「 ادخل الـكـود 」",
+    ClearText = false,
+    Callback = function(Value)
+        local rem = game:GetService("ReplicatedStorage").RE:FindFirstChild("1NoMoto1rVehicle1s")
+        if rem then
+            rem:FireServer("MotorVehicle")
+            rem:FireServer("PickingCarMusicText", Value)
+        end
+    end
 })
 AddTextBox(Main, {
   Name = "للسكوتر",
