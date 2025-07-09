@@ -4,8 +4,8 @@ local Libary = loadstring(game:HttpGet("https://raw.githubusercontent.com/5TR9/5
 workspace.FallenPartsDestroyHeight = -math.huge
 
 local Window = Libary:MakeWindow({
-    Title = "🌌 Nytherune Hub + 🌌 - Spacecomm Developers Brookhaven",
-    SubTitle = "by: Spacecomm Developers (Wx, Galaxy, Why)",
+    Title = "5TR HUB | Brookhaven | V1.0",
+    SubTitle = "By : 5TR | D7lix_R",
     LoadText = "Spacecomm Developers",
     Flags = "nythrnHub_Broookhaven"
 })
