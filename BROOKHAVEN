@@ -4,14 +4,15 @@ local Libary = loadstring(game:HttpGet("https://raw.githubusercontent.com/5TR9/5
 workspace.FallenPartsDestroyHeight = -math.huge
 
 local Window = Libary:MakeWindow({
-    Title = "5TR HUB : 0.3.6 | Brookhaven | V1.0",
-    SubTitle = "By : 5TR | D7lix_R",
+    Title = "5TR HUB  | Brookhaven | V1.0",
+    SubTitle = "By : 5TR  | D7lix_R ",
     LoadText = "Spacecomm Developers",
     Flags = "nythrnHub_Broookhaven"
 })
 Window:AddMinimizeButton({
-    Button = { Image = "rbxassetid://1120738435", BackgroundTransparency = 0 },
-    Corner = { CornerRadius = UDim.new(35, 1) },
+    Button = { Image = "rbxassetid://118645584852990", BackgroundTransparency = 0 },
+    Corner = { CornerRadius = UDim.new(50, 13) },
+    CornerRadius = UDim.new(0, 13)
 })
 
 local InfoTab = Window:MakeTab({ Title = "Info", Icon = "rbxassetid://10723415903" })
