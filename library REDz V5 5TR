@@ -32,6 +32,87 @@ if #Tabs == 1 then
 	SetActiveTab(button)
 	tabFrame.Visible = true
 end
+local PlayerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local Colors = {
+	["Color Hub 1"] = ColorSequence.new{
+		ColorSequenceKeypoint.new(0, Color3.fromRGB(25, 25, 25)),
+		ColorSequenceKeypoint.new(0.5, Color3.fromRGB(32, 32, 32)),
+		ColorSequenceKeypoint.new(1, Color3.fromRGB(25, 25, 25))
+	},
+	["Color Hub 2"] = Color3.fromRGB(30, 30, 30),
+	["Color Stroke"] = Color3.fromRGB(40, 40, 40),
+	["Color Theme"] = Color3.fromRGB(255, 0, 0),
+	["Color Text"] = Color3.fromRGB(255, 0, 0),
+	["Color Dark Text"] = Color3.fromRGB(255, 255, 255)
+}
+
+local gui = Instance.new("ScreenGui", PlayerGui)
+local main = Instance.new("Frame", gui)
+main.Size = UDim2.new(0, 550, 0, 350)
+main.Position = UDim2.new(0.5, -275, 0.5, -175)
+main.BackgroundColor3 = Colors["Color Hub 2"]
+main.BorderColor3 = Colors["Color Stroke"]
+main.BorderSizePixel = 2
+
+local tabBar = Instance.new("Frame", main)
+tabBar.Size = UDim2.new(1, 0, 0, 40)
+tabBar.BackgroundColor3 = Colors["Color Hub 2"]
+
+local tabPages = Instance.new("Frame", main)
+tabPages.Position = UDim2.new(0, 0, 0, 40)
+tabPages.Size = UDim2.new(1, 0, 1, -40)
+tabPages.BackgroundColor3 = Colors["Color Hub 1"].Keypoints[1].Value
+
+local Tabs = {}
+
+local function SetActiveTab(activeButton)
+	for _, btn in ipairs(Tabs) do
+		local txt = btn:FindFirstChildWhichIsA("TextLabel") or btn
+		txt.TextColor3 = (btn == activeButton) and Colors["Color Dark Text"] or Colors["Color Text"]
+	end
+end
+
+local function CreateTab(name, index)
+	local content = Instance.new("Frame", tabPages)
+	content.Size = UDim2.new(1, 0, 1, 0)
+	content.BackgroundTransparency = 1
+	content.Visible = false
+
+	local label = Instance.new("TextLabel", content)
+	label.Size = UDim2.new(1, 0, 1, 0)
+	label.BackgroundTransparency = 1
+	label.Text = name
+	label.TextColor3 = Colors["Color Dark Text"]
+	label.Font = Enum.Font.GothamBold
+	label.TextSize = 20
+
+	local btn = Instance.new("TextButton", tabBar)
+	btn.Size = UDim2.new(0, 120, 1, 0)
+	btn.Position = UDim2.new(0, (index - 1) * 120, 0, 0)
+	btn.BackgroundTransparency = 1
+	btn.Font = Enum.Font.GothamBold
+	btn.TextSize = 14
+	btn.Text = name
+	btn.TextColor3 = Colors["Color Text"]
+	btn.AutoButtonColor = false
+
+	btn.MouseButton1Click:Connect(function()
+		for _, t in pairs(tabPages:GetChildren()) do
+			t.Visible = false
+		end
+		content.Visible = true
+		SetActiveTab(btn)
+	end)
+
+	table.insert(Tabs, btn)
+
+	if #Tabs == 1 then
+		content.Visible = true
+		SetActiveTab(btn)
+	end
+end
+
 	Info = {
 		Version = "1.1.0"
 	},
