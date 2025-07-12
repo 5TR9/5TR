@@ -1,52 +1,37 @@
-local MarketplaceService = game:GetService("MarketplaceService")
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
-local HttpService = game:GetService("HttpService")
-local RunService = game:GetService("RunService")
-local CoreGui = game:GetService("CoreGui")
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer
-local PlayerMouse = Player:GetMouse()
+local Tabs = {}
 
-local redzlib = {
-	Themes = {
-		Darker = {
-			["Color Hub 1"] = ColorSequence.new({
-				ColorSequenceKeypoint.new(0.00, Color3.fromRGB(25, 25, 25)),
-				ColorSequenceKeypoint.new(0.50, Color3.fromRGB(32.5, 32.5, 32.5)),
-				ColorSequenceKeypoint.new(1.00, Color3.fromRGB(25, 25, 25))
-			}),
-			["Color Hub 2"] = Color3.fromRGB(30, 30, 30),
-			["Color Stroke"] = Color3.fromRGB(40, 40, 40),
-			["Color Theme"] = Color3.fromRGB(255, 0, 0),
-			["Color Text"] = Color3.fromRGB(255, 255, 255),
-			["Color Dark Text"] = Color3.fromRGB(255, 0, 0)
-		},
-		Dark = {
-			["Color Hub 1"] = ColorSequence.new({
-				ColorSequenceKeypoint.new(0.00, Color3.fromRGB(40, 40, 40)),
-				ColorSequenceKeypoint.new(0.50, Color3.fromRGB(47.5, 47.5, 47.5)),
-				ColorSequenceKeypoint.new(1.00, Color3.fromRGB(40, 40, 40))
-			}),
-			["Color Hub 2"] = Color3.fromRGB(45, 45, 45),
-			["Color Stroke"] = Color3.fromRGB(65, 65, 65),
-			["Color Theme"] = Color3.fromRGB(255, 0, 0),
-			["Color Text"] = Color3.fromRGB(255, 255, 255),
-			["Color Dark Text"] = Color3.fromRGB(255, 0, 0)
-		},
-		Purple = {
-			["Color Hub 1"] = ColorSequence.new({
-				ColorSequenceKeypoint.new(0.00, Color3.fromRGB(27.5, 25, 30)),
-				ColorSequenceKeypoint.new(0.50, Color3.fromRGB(32.5, 32.5, 32.5)),
-				ColorSequenceKeypoint.new(1.00, Color3.fromRGB(27.5, 25, 30))
-			}),
-			["Color Hub 2"] = Color3.fromRGB(0, 255, 0),
-			["Color Stroke"] = Color3.fromRGB(255, 255, 0),
-			["Color Theme"] = Color3.fromRGB(255, 0, 0),
-			["Color Text"] = Color3.fromRGB(255, 255, 255),
-			["Color Dark Text"] = Color3.fromRGB(255, 0, 0)
-		}
-	},
+local function SetActiveTab(activeButton)
+	for _, btn in ipairs(Tabs) do
+		local txt = btn:FindFirstChildWhichIsA("TextLabel") or btn
+		txt.TextColor3 = (btn == activeButton) and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(255, 0, 0)
+	end
+end
+
+local button = Instance.new("TextButton")
+button.Name = "TabButton"
+button.BackgroundTransparency = 1
+button.Size = UDim2.new(0, 120, 1, 0)
+button.Font = Enum.Font.GothamBold
+button.TextSize = 14
+button.Text = tabName
+button.TextColor3 = Color3.fromRGB(255, 0, 0)
+button.AutoButtonColor = false
+button.Parent = tabBar
+
+button.MouseButton1Click:Connect(function()
+	for _, tabFrame in pairs(tabPages:GetChildren()) do
+		tabFrame.Visible = false
+	end
+	tabFrame.Visible = true
+	SetActiveTab(button)
+end)
+
+table.insert(Tabs, button)
+
+if #Tabs == 1 then
+	SetActiveTab(button)
+	tabFrame.Visible = true
+end
 	Info = {
 		Version = "1.1.0"
 	},
