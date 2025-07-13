@@ -1,118 +1,52 @@
-local Tabs = {}
+local MarketplaceService = game:GetService("MarketplaceService")
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local HttpService = game:GetService("HttpService")
+local RunService = game:GetService("RunService")
+local CoreGui = game:GetService("CoreGui")
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local PlayerMouse = Player:GetMouse()
 
-local function SetActiveTab(activeButton)
-	for _, btn in ipairs(Tabs) do
-		local txt = btn:FindFirstChildWhichIsA("TextLabel") or btn
-		txt.TextColor3 = (btn == activeButton) and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(255, 0, 0)
-	end
-end
-
-local button = Instance.new("TextButton")
-button.Name = "TabButton"
-button.BackgroundTransparency = 1
-button.Size = UDim2.new(0, 120, 1, 0)
-button.Font = Enum.Font.GothamBold
-button.TextSize = 14
-button.Text = tabName
-button.TextColor3 = Color3.fromRGB(255, 0, 0)
-button.AutoButtonColor = false
-button.Parent = tabBar
-
-button.MouseButton1Click:Connect(function()
-	for _, tabFrame in pairs(tabPages:GetChildren()) do
-		tabFrame.Visible = false
-	end
-	tabFrame.Visible = true
-	SetActiveTab(button)
-end)
-
-table.insert(Tabs, button)
-
-if #Tabs == 1 then
-	SetActiveTab(button)
-	tabFrame.Visible = true
-end
-local PlayerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-local Colors = {
-	["Color Hub 1"] = ColorSequence.new{
-		ColorSequenceKeypoint.new(0, Color3.fromRGB(25, 25, 25)),
-		ColorSequenceKeypoint.new(0.5, Color3.fromRGB(32, 32, 32)),
-		ColorSequenceKeypoint.new(1, Color3.fromRGB(25, 25, 25))
+local redzlib = {
+	Themes = {
+		Darker = {
+			["Color Hub 1"] = ColorSequence.new({
+				ColorSequenceKeypoint.new(0.00, Color3.fromRGB(25, 25, 25)),
+				ColorSequenceKeypoint.new(0.50, Color3.fromRGB(32.5, 32.5, 32.5)),
+				ColorSequenceKeypoint.new(1.00, Color3.fromRGB(25, 25, 25))
+			}),
+			["Color Hub 2"] = Color3.fromRGB(30, 30, 30),
+			["Color Stroke"] = Color3.fromRGB(40, 40, 40),
+			["Color Theme"] = Color3.fromRGB(88, 101, 242),
+			["Color Text"] = Color3.fromRGB(243, 243, 243),
+			["Color Dark Text"] = Color3.fromRGB(180, 180, 180)
+		},
+		Dark = {
+			["Color Hub 1"] = ColorSequence.new({
+				ColorSequenceKeypoint.new(0.00, Color3.fromRGB(40, 40, 40)),
+				ColorSequenceKeypoint.new(0.50, Color3.fromRGB(47.5, 47.5, 47.5)),
+				ColorSequenceKeypoint.new(1.00, Color3.fromRGB(40, 40, 40))
+			}),
+			["Color Hub 2"] = Color3.fromRGB(45, 45, 45),
+			["Color Stroke"] = Color3.fromRGB(65, 65, 65),
+			["Color Theme"] = Color3.fromRGB(255, 255, 255),
+			["Color Text"] = Color3.fromRGB(245, 245, 245),
+			["Color Dark Text"] = Color3.fromRGB(190, 190, 190)
+		},
+		Purple = {
+			["Color Hub 1"] = ColorSequence.new({
+				ColorSequenceKeypoint.new(0.00, Color3.fromRGB(27.5, 25, 30)),
+				ColorSequenceKeypoint.new(0.50, Color3.fromRGB(32.5, 32.5, 32.5)),
+				ColorSequenceKeypoint.new(1.00, Color3.fromRGB(27.5, 25, 30))
+			}),
+			["Color Hub 2"] = Color3.fromRGB(255, 0, 0),
+			["Color Stroke"] = Color3.fromRGB(40, 40, 40),
+			["Color Theme"] = Color3.fromRGB(255, 0, 0),
+			["Color Text"] = Color3.fromRGB(240, 240, 240),
+			["Color Dark Text"] = Color3.fromRGB(180, 180, 180)
+		}
 	},
-	["Color Hub 2"] = Color3.fromRGB(30, 30, 30),
-	["Color Stroke"] = Color3.fromRGB(40, 40, 40),
-	["Color Theme"] = Color3.fromRGB(255, 0, 0),
-	["Color Text"] = Color3.fromRGB(255, 0, 0),
-	["Color Dark Text"] = Color3.fromRGB(255, 255, 255)
-}
-
-local gui = Instance.new("ScreenGui", PlayerGui)
-local main = Instance.new("Frame", gui)
-main.Size = UDim2.new(0, 550, 0, 350)
-main.Position = UDim2.new(0.5, -275, 0.5, -175)
-main.BackgroundColor3 = Colors["Color Hub 2"]
-main.BorderColor3 = Colors["Color Stroke"]
-main.BorderSizePixel = 2
-
-local tabBar = Instance.new("Frame", main)
-tabBar.Size = UDim2.new(1, 0, 0, 40)
-tabBar.BackgroundColor3 = Colors["Color Hub 2"]
-
-local tabPages = Instance.new("Frame", main)
-tabPages.Position = UDim2.new(0, 0, 0, 40)
-tabPages.Size = UDim2.new(1, 0, 1, -40)
-tabPages.BackgroundColor3 = Colors["Color Hub 1"].Keypoints[1].Value
-
-local Tabs = {}
-
-local function SetActiveTab(activeButton)
-	for _, btn in ipairs(Tabs) do
-		local txt = btn:FindFirstChildWhichIsA("TextLabel") or btn
-		txt.TextColor3 = (btn == activeButton) and Colors["Color Dark Text"] or Colors["Color Text"]
-	end
-end
-
-local function CreateTab(name, index)
-	local content = Instance.new("Frame", tabPages)
-	content.Size = UDim2.new(1, 0, 1, 0)
-	content.BackgroundTransparency = 1
-	content.Visible = false
-
-	local label = Instance.new("TextLabel", content)
-	label.Size = UDim2.new(1, 0, 1, 0)
-	label.BackgroundTransparency = 1
-	label.Text = name
-	label.TextColor3 = Colors["Color Dark Text"]
-	label.Font = Enum.Font.GothamBold
-	label.TextSize = 20
-
-	local btn = Instance.new("TextButton", tabBar)
-	btn.Size = UDim2.new(0, 120, 1, 0)
-	btn.Position = UDim2.new(0, (index - 1) * 120, 0, 0)
-	btn.BackgroundTransparency = 1
-	btn.Font = Enum.Font.GothamBold
-	btn.TextSize = 14
-	btn.Text = name
-	btn.TextColor3 = Colors["Color Text"]
-	btn.AutoButtonColor = false
-
-	btn.MouseButton1Click:Connect(function()
-		for _, t in pairs(tabPages:GetChildren()) do
-			t.Visible = false
-		end
-		content.Visible = true
-		SetActiveTab(btn)
-	end)
-
-	table.insert(Tabs, btn)
-
-	if #Tabs == 1 then
-		content.Visible = true
-		SetActiveTab(btn)
-	end
-end
-
 	Info = {
 		Version = "1.1.0"
 	},
