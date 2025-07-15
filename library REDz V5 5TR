@@ -1580,7 +1580,7 @@ function redzlib:MakeWindow(Configs)
 	local Window, FirstTab = {}, false
 	function Window:CloseBtn()
 		local Dialog = Window:Dialog({
-			Title = "اغلاق",
+			Title = "النظام",
 			Text = "هل تريد بالفعل اغلاق الواجهة؟",
 			Options = {
 				{"نعم", function()
