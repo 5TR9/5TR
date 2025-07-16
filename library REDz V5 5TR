@@ -45,8 +45,21 @@ local redzlib = {
 			["Color Theme"] = Color3.fromRGB(255, 0, 0),
 			["Color Text"] = Color3.fromRGB(240, 240, 240),
 			["Color Dark Text"] = Color3.fromRGB(180, 180, 180)
+		},
+		RedBlackWhite = {
+			["Color Hub 1"] = ColorSequence.new({
+				ColorSequenceKeypoint.new(0.00, Color3.fromRGB(15, 15, 15)),   -- خلفية داكنة جدًا
+				ColorSequenceKeypoint.new(0.50, Color3.fromRGB(25, 25, 25)),
+				ColorSequenceKeypoint.new(1.00, Color3.fromRGB(15, 15, 15))
+			}),
+			["Color Hub 2"] = Color3.fromRGB(20, 20, 20), -- خلفية ثانوية
+			["Color Stroke"] = Color3.fromRGB(80, 0, 0), -- حواف بلون أحمر غامق
+			["Color Theme"] = Color3.fromRGB(255, 0, 0), -- الأحمر الأساسي
+			["Color Text"] = Color3.fromRGB(255, 255, 255), -- النص الأبيض
+			["Color Dark Text"] = Color3.fromRGB(200, 200, 200) -- رمادي فاتح للنصوص الثانوية
 		}
-	},
+	}
+}
 	Info = {
 		Version = "1.1.0"
 	},
