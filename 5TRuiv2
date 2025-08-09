@@ -1,13 +1,12 @@
 local Configs_HUB = { 
-  Cor_Hub = Color3.fromRGB(0, 0, 0), 
-  Cor_Options = Color3.fromRGB(0, 0, 0), 
-  Cor_Stroke = Color3.fromRGB(0, 255, 200), 
-  Cor_Text = Color3.fromRGB(240, 240, 240), 
-  Cor_DarkText = Color3.fromRGB(240, 240, 240), 
-  Corner_Radius = UDim.new(0, 15), 
-  Text_Font = Enum.Font.FredokaOne 
+  Cor_Hub = Color3.fromRGB(20, 0, 0), -- أسود مائل للأحمر
+  Cor_Options = Color3.fromRGB(30, 0, 0), -- أسود أغمق شوية
+  Cor_Stroke = Color3.fromRGB(200, 0, 0), -- أحمر قوي للحدود
+  Cor_Text = Color3.fromRGB(255, 200, 200), -- نص أبيض مائل للأحمر
+  Cor_DarkText = Color3.fromRGB(255, 150, 150), -- نص أغمق قليل
+  Corner_Radius = UDim.new(0, 15), -- نفس الزوايا الدائرية
+  Text_Font = Enum.Font.FredokaOne
 }
-
 local CoreGui = game:GetService("CoreGui")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
