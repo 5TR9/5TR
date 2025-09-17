@@ -221,9 +221,9 @@ function MakeWindow(Configs)
   local KeyKey = Configs.Key.Keys or {"123", "321"}
   local KeyLink = Configs.Key.KeyLink or ""
   local KeyNotifications = Configs.Key.Notifi.Notifications or true
-  local KeyNotSuccess = Configs.Key.Notifi.Incorrectkey or "The key is incorrect"
-  local KeySuccess = Configs.Key.Notifi.CorrectKey or "Running the Script..."
-  local KeyCopyKeyLink = Configs.Key.Notifi.CopyKeyLink or "Copied to Clipboard"
+  local KeyNotSuccess = Configs.Key.Notifi.Incorrectkey or "المفتاح غير صحيح!"
+  local KeySuccess = Configs.Key.Notifi.CorrectKey or "المفتاح صحيح جاري تشغيل السكربت..."
+  local KeyCopyKeyLink = Configs.Key.Notifi.CopyKeyLink or "تم النسخ الى الحافظة"
   
   if KeySystem then
     local KeyMenu = Create("Frame", ScreenGui, {
@@ -1771,7 +1771,7 @@ end
       Size = UDim2.new(1, -24, 0, 25),
       AnchorPoint = Vector2.new(0.5, 1),
       Position = UDim2.new(0.5, 0, 1, -8),
-      Text = "Join",
+      Text = "انضم",
       Font = Enum.Font.GothamBold,
       TextSize = 15,
       TextColor3 = Color3.fromRGB(220, 220, 220),
@@ -1782,11 +1782,11 @@ end
     ClickConter = 0
     JoinButton.MouseButton1Click:Connect(function()
       if ClickConter == 0 or tick() - time > 5 then time = tick() setclipboard(DiscordLink) ClickConter = ClickConter + 1
-        JoinButton.Text = "Copied to Clipboard"
+        JoinButton.Text = "تم النسخ الى الحافظة"
         JoinButton.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
         JoinButton.TextColor3 = Color3.fromRGB(150, 150, 150)
         task.wait(5)
-        JoinButton.Text = "Join"
+        JoinButton.Text = "انضم"
         JoinButton.BackgroundColor3 = Color3.fromRGB(50, 200, 50)
         JoinButton.TextColor3 = Color3.fromRGB(220, 220, 220)
       end
